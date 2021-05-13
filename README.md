@@ -41,6 +41,12 @@ BibTex format:
 These codes can be downloaded using git (www.git-scm.com):
 
     cd <Repositories> # whatever download destination
+    git clone https://github.com/jimzhang629/RippleNet
+    cd RippleNet
+    
+Or get the original RippleNet code:
+
+    cd <Repositories> # whatever download destination
     git clone https://github.com/CINPLA/RippleNet
     cd RippleNet
 
