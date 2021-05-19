@@ -4,7 +4,7 @@
 
 This repository contains files for RippleNet, a recurrent neural network with LSTM
 layers for detecting sharp-wave ripples in single-channel LFP signals measured
-in hippocampus CA1.
+in hippocampus CA1. It also explores the parameters of RippleNet and attempts to modify it to improve its performance.
 
 Author: Espen Hagen (https://github.com/espenhgn)
 
