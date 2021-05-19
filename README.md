@@ -97,6 +97,14 @@ Retraining networks is not recommended (no GPU access)!
 - `RippleNet_manuscript_figures.ipynb`: Notebook for generating figures 2-7 in Hagen E. et al. (2020)
 - `RippleNet_timeseries_prediction.ipynb`: Notebook for generating figures 8-11 in Hagen E. et al. (2020)
 - `RippleNet_interactive_prototype.ipynb`: Notebook with user-interactive detection and rejection of ripple events
+- `edited_RippleNet_training_bidirectional.ipynb`: Jupyter notebook for training of bidirectional RippleNet with variable length training data
+- `edited_RippleNet_training_unidirectional.ipynb`: Jupyter notebook for training of unidirectional RippleNet with variable length training data
+- `edited_RippleNet_manuscript_figures.ipynb`: Notebook that attempts to use variable length validation data for generating figures 2-7 in Hagen E. et al. (2020)
+- `edited_RippleNet_timeseries_prediction.ipynb`: Notebook that uses variable length test data segments for generating figures 8-11 in Hagen E. et al. (2020), as well as figures for comparing different network parameters.
+- `KemereLab_data_edited_RippleNet_timeseries_prediction.ipynb`: Notebook that does same thing as the other timeseries prediction notebooks, but modified to work on  Kemere Lab LFP data.
+
+
+
 - `trained_networks/`
     - `ripplenet_*directional_random_seed*.h5`: trained RippleNet instances of uni- or bidirectional types
     - `ripplenet_*directional_best_random_seed*.h5`: best-performing model on validation set during training
