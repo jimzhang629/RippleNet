@@ -310,3 +310,88 @@ def get_TPs_FPs_FNs_stats(Y, Y_pred, rippleLocs,
                                   'precision', 'recall', 'F_1'])
 
     return TPs, FPs, FNs, stats
+
+
+def get_TPs_FPs_FNs_stats_KemereLabData(Y, Y_pred, threshold, distance, width, decimals=3):
+    '''
+    Parameters
+    ----------
+    Y: ndarray
+    Y_pred: ndarray
+    threshold: float
+    distance: int
+    width: int
+    Fs: float
+    decimals: int
+
+    Returns
+    -------
+    TPs: structured ndarray
+    FPs: structured ndarray
+    FNs: structured ndarray
+    '''
+    # network is not trained on negatives, so we quantify true/false positives
+    # and false negatives
+    TPs = []
+    # TNs = []
+    FPs = []
+    FNs = []
+    # Determine time(s) and probability(ies) in sample as the time and
+    # magnitude of local maxima following a threshold crossing from below
+    peaks, _ = ss.find_peaks(Y_pred, height=threshold, distance=distance,
+                             width=width)
+
+    # one-hot encoding of found peaks
+
+    # hat_y = np.zeros(Y.shape[0])
+    # hat_y[peaks] = 1
+    # hat_y = np.convolve(hat_y, ss.boxcar(y_label_width), 'same')
+
+    if peaks.size == 0:
+        # no event was predicted, so all labeled event times are counted as FNs
+        for j in Y:
+            FNs.append(j)
+    else:
+        # add labeled events to list of FNs if no peak was found when y==1
+        for idx, j in enumerate(Y):
+            if j == 1:
+                if idx in peaks:
+                    pass
+                else:
+                    FNs.append(idx)
+            else:
+                pass
+            
+    # predicted events must be TPs or FPs
+    for j in peaks:
+        # check if label == 1 at time of peaks, if so, count TP
+        if Y[j] == 1:
+            TPs.append(j)
+        else:
+            # peak is occurring at time where label == 0, count as FP
+            FPs.append(j)
+
+    # Evaluation metrics
+    TP = len(TPs)
+    # TN = len(TNs)
+    FP = len(FPs)
+    FN = len(FNs)
+    # Accuracy = (TP + TN) / (TP + TN + FP + FN)
+    try:
+        precision = TP / (TP + FP)
+    except ZeroDivisionError:
+        precision = 0
+    recall = TP / (TP + FN)
+    try:
+        F1 = 2 / (precision**-1 + recall**-1)
+    except ZeroDivisionError:
+        F1 = 0
+
+    stats = pd.DataFrame([[TP, FP, FN, FP+FN,
+                           np.round(precision, decimals=decimals),
+                           np.round(recall, decimals=decimals),
+                           np.round(F1, decimals=decimals)]],
+                         columns=['TP', 'FP', 'FN', 'FP+FN',
+                                  'precision', 'recall', 'F_1'])
+
+    return TPs, FPs, FNs, stats
