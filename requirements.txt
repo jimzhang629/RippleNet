@@ -1,4 +1,5 @@
 numpy
+nelpy
 scipy
 ipympl
 matplotlib
