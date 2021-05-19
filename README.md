@@ -55,6 +55,7 @@ Some binary files like `.h5` and `.pkl` may be tracked using Git LFS (https://gi
 ## dependencies
 
 - `python>=3`
+- `nelpy`
 - `numpy`
 - `scipy`
 - `ipympls`
@@ -94,7 +95,7 @@ Retraining networks is not recommended (no GPU access)!
 - `RippleNet_training_bidirectional.ipynb`: Jupyter notebook for training bidirectional RippleNet
 - `RippleNet_training_unidirectional.ipynb`: Notebook for training unidirectional RippleNet
 - `RippleNet_manuscript_figures.ipynb`: Notebook for generating figures 2-7 in Hagen E. et al. (2020)
-- `RippleNet_timeseries_prediction.ipynb`: Notebook	for generating figures 8-11 in Hagen E. et al. (2020)
+- `RippleNet_timeseries_prediction.ipynb`: Notebook for generating figures 8-11 in Hagen E. et al. (2020)
 - `RippleNet_interactive_prototype.ipynb`: Notebook with user-interactive detection and rejection of ripple events
 - `trained_networks/`
     - `ripplenet_*directional_random_seed*.h5`: trained RippleNet instances of uni- or bidirectional types
@@ -111,3 +112,8 @@ Retraining networks is not recommended (no GPU access)!
     - `validation_00.h5`: Validation data set (rat)
     - `test_00.h5`: Test data set (mouse)
     - `m4029_session1.h5`: Test data set (mouse, continuous)
+    - `Figure7A_lfp.npz`: Kemere Lab LFP data for two channels, TF2 and TF3.
+    - `Figure7A_detectBounds.npz`: Contains the start and stop times for ground truth ripples in the Kemere Lab LFP data.
+    - `Figure7A_offlineRippleDetectionsT2.npz`: Kemere Lab offline ripple detection data for T2 channel
+    - `Figure7A_offlineRippleDetectionsT3.npz`: Kemere Lab offline ripple detection data for T3 channel
+
